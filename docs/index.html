@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .forgot-password {
+            text-align: right;
+            display: block;
+            margin-bottom: 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .signup-link {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <!-- Usuário -->
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+
+        <!-- Senha -->
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+        <!-- Esqueci minha senha -->
+        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+
+        <!-- Enviar -->
+        <input type="submit" value="Entrar">
+    </form>
+
+    <!-- Link para Cadastro -->
+    <div class="signup-link">
+        Não tem uma conta? <a href="#">Cadastre-se</a>
+    </div>
+</div>
+
+</body>
+</html>
