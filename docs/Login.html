@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        /* Estilo geral do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00aaff, #0047b3); /* Fundo degradê azul */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            height: 100vh; /* Altura total da viewport */
+            box-sizing: border-box;
+        }
+
+        /* Container do formulário */
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra para efeito de profundidade */
+            max-width: 500px; /* Largura máxima */
+            width: 100%; /* Largura total adaptável */
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out; /* Efeito de transformação ao passar o mouse */
+        }
+
+        .login-container:hover {
+            transform: scale(1.02); /* Leve aumento ao passar o mouse */
+        }
+
+        /* Título do formulário */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px; /* Tamanho da fonte do título */
+        }
+
+        /* Estilo dos rótulos dos campos */
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        /* Estilo dos campos de entrada */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s; /* Transição para foco */
+        }
+
+        /* Estilo dos campos de entrada em foco */
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff; /* Cor da borda em foco */
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Sombra em foco */
+            outline: none; /* Remove o contorno padrão */
+        }
+
+        /* Estilo do botão de envio */
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 6px;
+            width: 100%; /* Botão totalmente esticado */
+            display: block;
+            margin: 0 auto; /* Centraliza o botão */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Transições para hover e clique */
+        }
+
+        /* Estilo do botão de envio ao passar o mouse */
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Efeito de elevação */
+        }
+
+        /* Estilo do botão de envio ao clicar */
+        input[type="submit"]:active {
+            transform: translateY(1px); /* Efeito de pressão */
+        }
+
+        /* Estilo do link para recuperação de senha */
+        .forgot-password {
+            display: block;
+            margin-top: 1rem;
+            color: #007bff;
+            font-size: 0.875rem;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo do link para cadastro */
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 20px; /* Reduz o padding em telas menores */
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 10px; /* Ajusta o padding dos campos de entrada */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px; /* Reduz o tamanho da fonte do título */
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="submit"] {
+                font-size: 12px;
+                padding: 8px; /* Ajusta ainda mais o padding em telas muito pequenas */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <!-- Campo de entrada para o usuário -->
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required autocomplete="username">
+
+        <!-- Campo de entrada para a senha -->
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required autocomplete="current-password">
+
+        <!-- Botão de envio do formulário -->
+        <input type="submit" value="Entrar">
+
+        <!-- Link para recuperação de senha -->
+        <a href="recuperar-senha.html" class="forgot-password">Esqueceu a senha?</a> <!-- Link corrigido -->
+    </form>
+
+    <!-- Link para cadastro -->
+    <div class="signup-link">
+        Não tem uma conta? <a href="cadastro.html">Cadastre-se</a> <!-- Direcionamento para a página de cadastro -->
+    </div>
+</div>
+
+</body>
+</html>

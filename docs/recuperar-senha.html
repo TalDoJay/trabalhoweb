@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueceu a Senha</title>
+    <style>
+        /* Estilo geral do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00aaff, #0047b3); /* Fundo degradê azul */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            height: 100vh; /* Altura total da viewport */
+            box-sizing: border-box;
+        }
+
+        /* Container do formulário */
+        .password-reset-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra para efeito de profundidade */
+            max-width: 400px; /* Largura máxima */
+            width: 100%; /* Largura total adaptável */
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out; /* Efeito de transformação ao passar o mouse */
+        }
+
+        .password-reset-container:hover {
+            transform: scale(1.02); /* Leve aumento ao passar o mouse */
+        }
+
+        /* Título do formulário */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px; /* Tamanho da fonte do título */
+        }
+
+        /* Estilo dos rótulos dos campos */
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        /* Estilo dos campos de entrada */
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s; /* Transição para foco */
+        }
+
+        /* Estilo dos campos de entrada em foco */
+        input[type="email"]:focus {
+            border-color: #007bff; /* Cor da borda em foco */
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Sombra em foco */
+            outline: none; /* Remove o contorno padrão */
+        }
+
+        /* Estilo do botão de envio */
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 12px;
+            border-radius: 6px;
+            width: 100%; /* Botão totalmente esticado */
+            display: block;
+            margin: 0 auto; /* Centraliza o botão */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Transições para hover e clique */
+        }
+
+        /* Estilo do botão de envio ao passar o mouse */
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Efeito de elevação */
+        }
+
+        /* Estilo do link para voltar */
+        .back-to-login {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-to-login:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px; /* Reduz o tamanho da fonte do título */
+            }
+            input[type="email"],
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 10px; /* Ajusta o padding dos campos de entrada */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="password-reset-container">
+    <h2>Recuperar Senha</h2>
+    <form action="/send-reset-link" method="POST">
+        <!-- Campo de entrada para o email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+        <!-- Botão de envio do formulário -->
+        <input type="submit" value="Enviar link de recuperação">
+
+        <!-- Link para voltar ao login -->
+        <a href="login.html" class="back-to-login">Voltar para login</a>
+    </form>
+</div>
+
+</body>
+</html>
