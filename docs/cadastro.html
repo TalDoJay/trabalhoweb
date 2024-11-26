@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esqueceu a Senha</title>
+    <title>Cadastro</title>
     <style>
         /* Estilo geral do corpo */
         body {
@@ -19,18 +19,18 @@
         }
 
         /* Container do formulário */
-        .password-reset-container {
+        .container {
             background-color: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra para efeito de profundidade */
-            max-width: 400px; /* Largura máxima */
+            max-width: 500px; /* Largura máxima */
             width: 100%; /* Largura total adaptável */
             box-sizing: border-box;
             transition: transform 0.3s ease-in-out; /* Efeito de transformação ao passar o mouse */
         }
 
-        .password-reset-container:hover {
+        .container:hover {
             transform: scale(1.02); /* Leve aumento ao passar o mouse */
         }
 
@@ -51,7 +51,10 @@
         }
 
         /* Estilo dos campos de entrada */
-        input[type="email"] {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -62,7 +65,9 @@
         }
 
         /* Estilo dos campos de entrada em foco */
-        input[type="email"]:focus {
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
             border-color: #007bff; /* Cor da borda em foco */
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Sombra em foco */
             outline: none; /* Remove o contorno padrão */
@@ -74,11 +79,6 @@
             border: none;
             color: white;
             font-size: 18px;
-            padding: 12px;
-            border-radius: 6px;
-            width: 100%; /* Botão totalmente esticado */
-            display: block;
-            margin: 0 auto; /* Centraliza o botão */
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s; /* Transições para hover e clique */
         }
@@ -89,49 +89,100 @@
             transform: translateY(-2px); /* Efeito de elevação */
         }
 
-        /* Estilo do link para voltar */
-        .back-to-login {
-            display: block;
-            margin-top: 20px;
+        /* Estilo do botão de envio ao clicar */
+        input[type="submit"]:active {
+            transform: translateY(1px); /* Efeito de pressão */
+        }
+
+        /* Estilo do link para login */
+        .login-link {
             text-align: center;
-            color: #007bff;
-            text-decoration: none;
+            margin-top: 20px;
+            color: #555;
             font-size: 14px;
         }
 
-        .back-to-login:hover {
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
             text-decoration: underline;
         }
 
         /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px; /* Reduz o padding em telas menores */
+            }
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 10px; /* Ajusta o padding dos campos de entrada */
+            }
+        }
+
         @media (max-width: 480px) {
             h2 {
                 font-size: 20px; /* Reduz o tamanho da fonte do título */
             }
+            input[type="text"],
             input[type="email"],
+            input[type="password"],
             input[type="submit"] {
-                font-size: 14px;
-                padding: 10px; /* Ajusta o padding dos campos de entrada */
+                font-size: 12px;
+                padding: 8px; /* Ajusta ainda mais o padding em telas muito pequenas */
             }
         }
     </style>
 </head>
 <body>
 
-<div class="password-reset-container">
-    <h2>Recuperar Senha</h2>
-    <form action="/send-reset-link" method="POST">
-        <!-- Campo de entrada para o email -->
+<div class="container">
+    <h2>Cadastro</h2>
+    <form id="registration-form" action="dashboard.html" method="POST">
+        <!-- Nome Completo -->
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+
+        <!-- Email -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Digite seu email" required>
 
-        <!-- Botão de envio do formulário -->
-        <input type="submit" value="Enviar link de recuperação">
+        <!-- Senha -->
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
 
-        <!-- Link para voltar ao login -->
-        <a href="login.html" class="back-to-login">Voltar para login</a>
+        <!-- Confirmar Senha -->
+        <label for="confirmar-senha">Confirmar Senha:</label>
+        <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
+
+        <!-- Cadastrar -->
+        <input type="submit" value="Cadastrar">
     </form>
+
+    <!-- Link para Login -->
+    <div class="login-link">
+        Já tem uma conta? <a href="login.html">Faça login</a>
+    </div>
 </div>
+
+<script>
+    // Adiciona validação de senhas no envio do formulário
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+        // Verifica se as senhas coincidem
+        if (senha !== confirmarSenha) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert('As senhas não coincidem!');
+        }
+    });
+</script>
 
 </body>
 </html>

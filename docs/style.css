@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
 * {
   margin: 0;
@@ -13,35 +13,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6dd5fa, #2980b9); /* Fundo degradê */
+  background-color: rgba(0,0,0,0.1);
 }
 
 button {
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-button:active {
-  transform: translateY(1px);
 }
 
 .container {
   width: 90%;
   height: 80%;
-  border-radius: 15px;
+  border-radius: 10px;
   background: white;
-  padding: 30px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.container:hover {
-  transform: scale(1.02);
 }
 
 .header {
@@ -50,48 +33,38 @@ button:active {
   align-items: center;
   justify-content: space-between;
   margin: auto 12px;
-  padding-bottom: 20px;
 }
 
 .header span {
   font-weight: 900;
-  font-size: 24px;
-  color: #333;
+  font-size: 20px;
+  word-break: break-all;
 }
 
 #new {
   font-size: 16px;
-  padding: 10px 15px;
+  padding: 8px;
   border-radius: 5px;
   border: none;
   color: white;
-  background-color: #007bff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#new i {
-  margin-right: 8px;
+  background-color: rgb(57, 57, 226);
 }
 
 .divTable {
   padding: 10px;
-  width: auto;
-  height: inherit;
-  overflow: auto;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  width: auto; 
+  height:inherit; 
+  overflow:auto;
 }
 
 .divTable::-webkit-scrollbar {
   width: 12px;
-  background-color: whitesmoke;
+  background-color: whitesmoke; 
 }
 
 .divTable::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: darkgray;
+  background-color: darkgray; 
 }
 
 table {
@@ -102,54 +75,71 @@ table {
 }
 
 thead {
-  background-color: #f1f1f1;
-  font-weight: 600;
+  background-color: whitesmoke;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+tr {
+  border-bottom: 1px solid rgb(238, 235, 235)!important;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #fff;
+tbody tr td {
+  vertical-align: text-top;
+  padding: 6px;
+  max-width: 50px;
 }
 
-thead th, tbody td {
-  padding: 10px;
-  text-align: left;
+thead tr th {
+  padding: 5px;
+  text-align: start;
+  margin-bottom: 50px;
+}
+
+tbody tr {
+  margin-bottom: 50px;
+}
+
+thead tr th.acao {
+  width: 100px!important;
+  text-align: center;
 }
 
 tbody tr td.acao {
   text-align: center;
 }
 
-thead tr th.acao {
-  width: 100px;
-  text-align: center;
-}
+@media (max-width: 700px) {
+  body {
+    font-size: 10px;
+  }
+  
+  .header span {
+    font-size: 15px;
+  }
 
-.edit-btn {
-  background-color: #3498db;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
+  #new {
+    padding: 5px;
+    font-size: 10px;
+  }
 
-.delete-btn {
-  background-color: #e74c3c;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
+  thead tr th.acao {
+    width: auto!important;
+  }
+  
+  td button i {
+    font-size: 20px!important;
+  }
 
-.edit-btn:hover {
-  background-color: #2980b9;
-}
+  td button i:first-child {
+    margin-right: 0;
+  }
 
-.delete-btn:hover {
-  background-color: #c0392b;
+  .modal {
+    width: 90%!important;
+  }
+
+  .modal label {
+    font-size: 12px!important;
+  }
 }
 
 .modal-container {
@@ -169,83 +159,69 @@ thead tr th.acao {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 40px;
   background-color: white;
   border-radius: 10px;
   width: 50%;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
 }
 
 .modal label {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 8px;
+  font-size: 14px;
+  width: 100%;
 }
 
 .modal input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.modal input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
   outline: none;
+  padding: 5px 10px; 
+  width: 100%;
+  margin-bottom: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 .modal button {
-  padding: 10px 20px;
   width: 100%;
-  border-radius: 5px;
+  margin: 10px auto;
+  outline: none;
+  border-radius: 20px; 
+  padding: 5px 10px; 
+  width: 100%;
   border: none;
-  background-color: #007bff;
+  background-color: rgb(57, 57, 226);
   color: white;
-  font-size: 16px;
 }
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #3498db;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+.active {
+  display: flex;
 }
 
-@media (max-width: 700px) {
-  body {
-    font-size: 12px;
-  }
+.active .modal {
+  animation: modal .4s;
+}
 
-  .container {
-    width: 100%;
-    padding: 15px;
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0);
   }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 
-  .modal {
-    width: 90%;
-  }
+td button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
 
-  .modal label {
-    font-size: 14px;
-  }
+td button i {
+  font-size: 25px;
+}
 
-  #new {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  td button i {
-    font-size: 20px;
-  }
+td button i:first-child {
+  margin-right: 10px;
 }

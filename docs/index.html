@@ -3,186 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro de Funcionário</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <style>
-        /* Estilo geral do corpo */
+        /* Estilo geral */
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #00aaff, #0047b3); /* Fundo degradê azul */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f7f9fc, #dce3f7); /* Fundo degradê claro */
             margin: 0;
-            height: 100vh; /* Altura total da viewport */
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
             box-sizing: border-box;
         }
 
-        /* Container do formulário */
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra para efeito de profundidade */
-            max-width: 500px; /* Largura máxima */
-            width: 100%; /* Largura total adaptável */
-            box-sizing: border-box;
-            transition: transform 0.3s ease-in-out; /* Efeito de transformação ao passar o mouse */
+        /* Barra superior com links */
+        .top-bar {
+            position: absolute;
+            top: 20px;
+            left: 20px; /* Adicionando a logo à esquerda */
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .container:hover {
-            transform: scale(1.02); /* Leve aumento ao passar o mouse */
+        /* Logo */
+        .logo img {
+            width: 100px; /* Aumentando o tamanho da logo */
+            height: auto;
+            cursor: pointer;
         }
 
-        /* Título do formulário */
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px; /* Tamanho da fonte do título */
-        }
-
-        /* Estilo dos rótulos dos campos */
-        label {
+        .top-bar a {
+            text-decoration: none;
+            color: #4e54c8;
             font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-            color: #555;
+            font-size: 16px;
         }
 
-        /* Estilo dos campos de entrada */
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="submit"] {
+        .top-bar a:hover {
+            color: #3d439f;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            padding: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            color: #333;
+            margin: 0;
+        }
+
+        header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .content-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .content-container h2 {
+            color: #333;
+            font-size: 24px;
             margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-            transition: border-color 0.3s, box-shadow 0.3s; /* Transição para foco */
         }
 
-        /* Estilo dos campos de entrada em foco */
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus {
-            border-color: #007bff; /* Cor da borda em foco */
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Sombra em foco */
-            outline: none; /* Remove o contorno padrão */
+        .content-container p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        /* Estilo do botão de envio */
-        input[type="submit"] {
-            background-color: #007bff;
-            border: none;
+        .content-container .btn {
+            background-color: #4e54c8;
             color: white;
             font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s; /* Transições para hover e clique */
+            transition: background-color 0.3s, transform 0.2s;
         }
 
-        /* Estilo do botão de envio ao passar o mouse */
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px); /* Efeito de elevação */
+        .content-container .btn:hover {
+            background-color: #3d439f;
+            transform: translateY(-3px);
         }
 
-        /* Estilo do botão de envio ao clicar */
-        input[type="submit"]:active {
-            transform: translateY(1px); /* Efeito de pressão */
+        .content-container .btn:active {
+            transform: translateY(1px);
         }
 
-        /* Estilo do link para login */
-        .login-link {
+        .calendar-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            font-size: 200px;
+            color: #4e54c8;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        footer {
+            background-color: #4e54c8;
+            color: white;
+            padding: 20px;
             text-align: center;
-            margin-top: 20px;
-            color: #555;
             font-size: 14px;
+            margin-top: 20px;
+            width: 100%;
         }
 
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsividade para telas menores */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px; /* Reduz o padding em telas menores */
+            header h1 {
+                font-size: 24px;
             }
-            input[type="text"],
-            input[type="email"],
-            input[type="password"],
-            input[type="submit"] {
+
+            .content-container {
+                padding: 20px;
+            }
+
+            .content-container .btn {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            .calendar-background {
+                font-size: 150px;
+            }
+
+            .top-bar a {
                 font-size: 14px;
-                padding: 10px; /* Ajusta o padding dos campos de entrada */
             }
         }
 
         @media (max-width: 480px) {
-            h2 {
-                font-size: 20px; /* Reduz o tamanho da fonte do título */
+            header h1 {
+                font-size: 20px;
             }
-            input[type="text"],
-            input[type="email"],
-            input[type="password"],
-            input[type="submit"] {
+
+            .content-container .btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .calendar-background {
+                font-size: 100px;
+            }
+
+            .top-bar a {
                 font-size: 12px;
-                padding: 8px; /* Ajusta ainda mais o padding em telas muito pequenas */
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Cadastro</h2>
-    <form id="registration-form" action="/register" method="POST">
-        <!-- Nome Completo -->
-        <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+<!-- Barra de Links no topo esquerdo com a logo -->
+<div class="top-bar">
+    <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo"> <!-- Substitua "logo.png" pela sua imagem -->
+    </a>
+    <a href="login.html">Login</a>
+    <a href="cadastro.html">Cadastro</a>
+</div>
 
-        <!-- Email -->
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+<header>
+    <h1>Bem-vindo ao Portal de Cadastro de Funcionários</h1>
+    <p>Cadastre novos funcionários de forma rápida e fácil.</p>
+</header>
 
-        <!-- Senha -->
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-
-        <!-- Confirmar Senha -->
-        <label for="confirmar-senha">Confirmar Senha:</label>
-        <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
-
-        <!-- Cadastrar -->
-        <input type="submit" value="Cadastrar">
-    </form>
-
-    <!-- Link para Login -->
-    <div class="login-link">
-        Já tem uma conta? <a href="login.html">Faça login</a>
+<div class="content-container">
+    <h2>Cadastro de Funcionário</h2>
+    <p>Utilize nosso sistema para adicionar novos funcionários e manter o controle das informações de maneira organizada e eficiente.</p>
+    <button class="btn" onclick="location.href='cadastro.html'">Cadastrar Funcionário</button>
+    <div class="calendar-background">
+        📅
     </div>
 </div>
 
-<script>
-    // Adiciona validação de senhas no envio do formulário
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-        const senha = document.getElementById('senha').value;
-        const confirmarSenha = document.getElementById('confirmar-senha').value;
-
-        // Verifica se as senhas coincidem
-        if (senha !== confirmarSenha) {
-            event.preventDefault(); // Impede o envio do formulário
-            alert('As senhas não coincidem!');
-        }
-    });
-</script>
+<footer>
+    &copy; 2024 Portal de Cadastro de Funcionários - Todos os direitos reservados.
+</footer>
 
 </body>
 </html>
